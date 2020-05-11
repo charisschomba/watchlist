@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-card.component.sass']
 })
 export class MovieCardComponent implements OnInit {
-
+  @Output() openMovieDetails = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  openMovie = () => {
+    this.openMovieDetails.emit(true)
+  }
 }

@@ -1,30 +1,47 @@
   <div class="col" style="background-color: aquamarine">
-    <button class="btn btn-primary cancel">X</button>
+    <button (click)="handleCloseMovieDetails()" class="btn-icon cancel">
+      <span class="material-icons">close</span>
+    </button>
     <div class="row d-flex  flex-column flex-wrap">
       <div>
-        <img src="https://images.unsplash.com/photo-1561505397-8e667b30ef2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+<!--        <img src="https://images.unsplash.com/photo-1561505397-8e667b30ef2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="454.5px">-->
       </div>
-      <div class="d-flex">
-        <p class="text-white pt-3">The Shape of Water</p>
+      <div class="d-flex px-3">
+        <p class="text-white pt-3 font-weight-bold">The Shape of Water</p>
         <p class="pt-3 pl-3">2017</p>
       </div>
-      <div class="d-flex">
+      <div class="d-flex px-3">
         <p class="text-white pt-3">Chariss Chali</p>
         <p class="pt-3 pl-3">Drama | Fantasy</p>
       </div>
-      <div class="">
-        <p class="mb-0 pb-3  producer-p">
+      <div class="px-3">
+        <p class="mb-0 py-3  producer-p p-section">
           Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
           farm-to-table craft beer twee
         </p>
-        <p class="">Rating icon <span>IMDb</span></p>
+       <div class="rating-wrapper">
+         <p class="rating font-weight-bold">7.5</p>
+         <round-progress responsive="true" current=7.5 max=10 color="yellow" background="black"></round-progress>
+         <p class="company">IMDb</p>
+       </div>
       </div>
-      <div class="d-flex justify-content-around">
-        <button class="btn btn-primary">UNFAV</button>
-        <button class="btn btn-primary">SET</button>
-        <button class="btn btn-primary">INFOS</button>
-        <button class="btn btn-primary">TRAILER</button>
+      <div class="d-flex justify-content-around mt-5">
+        <button class="text-center btn-icon">
+          <span class="material-icons">grade</span>
+          <p>UNFAV</p>
+        </button>
+        <button class="text-center btn-icon">
+          <span class="material-icons">laptop_mac</span>
+          <p>SET</p>
+        </button>
+        <button class="text-center btn-icon">
+          <span class="imdb">IMDb</span>
+          <p>INFOS</p>
+        </button>
+        <button class="text-center btn-icon">
+          <span class="material-icons">slideshow</span>
+          <p>TRAILER</p>
+        </button>
       </div>
-      <span class="mi mi-face">f</span>
     </div>
   </div>

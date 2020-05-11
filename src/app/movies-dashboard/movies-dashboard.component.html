@@ -3,23 +3,27 @@
     <nav ngbNav #nav="ngbNav" class="nav-tabs" id="nav">
       <ng-container>
         <div ngbNavItem>
-          <a ngbNavLink>One</a>
+          <a ngbNavLink>
+            <span class="material-icons">grade</span>
+          </a>
           <ng-template ngbNavContent>
 <!--            <div class="col d-flex flex-wrap justify-content-between pt-5 title-section">-->
 <!--              <h2 class="text-white">Watchlist</h2>-->
 <!--              <p class="favorite-p">All your favorite movies in one place </p>-->
 <!--            </div>-->
-<!--          <div class="row d-flex justify-content-start">-->
-<!--            <app-movie-card></app-movie-card>-->
-<!--            <app-movie-card></app-movie-card>-->
-<!--            <app-movie-card></app-movie-card>-->
-<!--            <app-movie-card></app-movie-card>-->
-<!--          </div>-->
+          <div class="row d-flex justify-content-start">
+            <app-movie-card (openMovieDetails)="handleMovieDetails($event)"></app-movie-card>
+            <app-movie-card></app-movie-card>
+            <app-movie-card></app-movie-card>
+            <app-movie-card></app-movie-card>
+          </div>
           </ng-template>
         </div>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink>History</a>
+        <a ngbNavLink>
+          <span class="material-icons">videocam</span>
+        </a>
         <ng-template ngbNavContent>
           <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
             farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
@@ -30,7 +34,9 @@
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink>Settings</a>
+        <a ngbNavLink>
+          <span class="material-icons">settings</span>
+        </a>
         <ng-template ngbNavContent>
           <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
             Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
@@ -44,7 +50,7 @@
     </nav>
     <div [ngbNavOutlet]="nav" class="mt-2 col"></div>
   </div>
-  <div class="col-3">
-    <app-movie-details></app-movie-details>
+  <div *ngIf="openDetail" class="col-3">
+    <app-movie-details (closeMovieDetails)="handleMovieDetails($event)"></app-movie-details>
   </div>
 </div>

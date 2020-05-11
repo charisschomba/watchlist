@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies-dashboard.component.sass']
 })
 export class MoviesDashboardComponent implements OnInit {
-
+  openDetail = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleMovieDetails = (event) => {
+    this.openDetail = !this.openDetail;
   }
 
 }

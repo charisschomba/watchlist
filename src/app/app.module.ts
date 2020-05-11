@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesDashboardComponent } from './movies-dashboard/movies-dashboard.component';
@@ -18,7 +18,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    RoundProgressModule
   ],
   providers: [],
   bootstrap: [AppComponent]
