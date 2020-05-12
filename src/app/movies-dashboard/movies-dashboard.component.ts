@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MoviesDashboardService } from './movies-dashboard.service'
+import { MovieObject} from './types'
 @Component({
   selector: 'app-movies-dashboard',
   templateUrl: './movies-dashboard.component.html',
@@ -7,13 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesDashboardComponent implements OnInit {
   openDetail = false;
-  constructor() { }
+  movieDetails: MovieObject
+  movies: [MovieObject]
+  constructor(private movieService: MoviesDashboardService) { }
 
   ngOnInit(): void {
+    this.movieService.getMovies().subscribe((movies: any) => {
+      console.log(movies)
+      this.movies = movies.items;
+    },
+      (e) => {
+        console.log(e)
+      })
   }
 
-  handleMovieDetails = (event) => {
-    this.openDetail = !this.openDetail;
+  handleMovieDetails = ({action, movie}) => {
+    console.log(open, movie)
+    this.openDetail = action;
+    this.movieDetails = movie;
   }
-
 }

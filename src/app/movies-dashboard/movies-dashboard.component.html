@@ -7,15 +7,14 @@
             <span class="material-icons">grade</span>
           </a>
           <ng-template ngbNavContent>
-<!--            <div class="col d-flex flex-wrap justify-content-between pt-5 title-section">-->
-<!--              <h2 class="text-white">Watchlist</h2>-->
-<!--              <p class="favorite-p">All your favorite movies in one place </p>-->
-<!--            </div>-->
-          <div class="row d-flex justify-content-start">
-            <app-movie-card (openMovieDetails)="handleMovieDetails($event)"></app-movie-card>
-            <app-movie-card></app-movie-card>
-            <app-movie-card></app-movie-card>
-            <app-movie-card></app-movie-card>
+            <div class="col d-flex flex-wrap justify-content-between pt-5 title-section">
+              <h2 class="text-white">Watchlist</h2>
+              <p class="favorite-p">All your favorite movies in one place </p>
+            </div>
+          <div class="row d-flex justify-content-start movies-wrapper">
+            <div *ngFor="let movie of movies" style="max-width: 25%">
+              <app-movie-card (openMovieDetails)="handleMovieDetails($event)" [movie]="movie"></app-movie-card>
+            </div>
           </div>
           </ng-template>
         </div>
@@ -25,12 +24,7 @@
           <span class="material-icons">videocam</span>
         </a>
         <ng-template ngbNavContent>
-          <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-            farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-            ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
-            helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-            8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-            stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+          <p></p>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
@@ -38,19 +32,13 @@
           <span class="material-icons">settings</span>
         </a>
         <ng-template ngbNavContent>
-          <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-            Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-            Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-            egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-            tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-            neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+          <p></p>
         </ng-template>
       </ng-container>
     </nav>
     <div [ngbNavOutlet]="nav" class="mt-2 col"></div>
   </div>
-  <div *ngIf="openDetail" class="col-3">
-    <app-movie-details (closeMovieDetails)="handleMovieDetails($event)"></app-movie-details>
+  <div *ngIf="openDetail" class="col-3 movies-details-wrapper">
+    <app-movie-details (closeMovieDetails)="handleMovieDetails($event)" [movie]="movieDetails"></app-movie-details>
   </div>
 </div>

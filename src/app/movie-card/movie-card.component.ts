@@ -1,4 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { MovieObject} from "../movies-dashboard/types";
+import { environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-movie-card',
@@ -6,12 +8,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./movie-card.component.sass']
 })
 export class MovieCardComponent implements OnInit {
-  @Output() openMovieDetails = new EventEmitter<boolean>();
+  imgUrl = environment.imageUrl;
+  @Input() movie:MovieObject;
+  @Output() openMovieDetails = new EventEmitter<{action:boolean, movie?: MovieObject}>();
   constructor() { }
 
   ngOnInit(): void {
   }
   openMovie = () => {
-    this.openMovieDetails.emit(true)
+    console.log(this.movie)
+    this.openMovieDetails.emit({action: true, movie: this.movie});
   }
 }
