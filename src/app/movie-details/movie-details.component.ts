@@ -10,6 +10,7 @@ import { environment} from "../../environments/environment";
 export class MovieDetailsComponent implements OnInit {
   @Output() closeMovieDetails = new EventEmitter<{ action: boolean, movie?: object }>();
   @Input() movie: MovieObject;
+  @Input() showCancelBtn: boolean = true;
   imgUrl = environment.imageUrl;
   constructor() { }
 

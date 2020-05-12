@@ -1,6 +1,6 @@
-  <div class="col wrapper">
-    <button (click)="handleCloseMovieDetails()" class="btn-icon cancel">
-      <span class="material-icons">close</span>
+<div class="col wrapper">
+    <button  *ngIf="showCancelBtn" (click)="handleCloseMovieDetails()" class="btn-icon cancel">
+      <span class="material-icons cancel-icon">close</span>
     </button>
     <div class="row d-flex  flex-column flex-wrap">
       <div>
@@ -11,34 +11,42 @@
         <p class="pt-3 pl-3 img-fluid">{{movie.release_date.split('-')[0]}}</p>
       </div>
       <div class="d-flex px-3">
-        <p class="text-white pt-3">Chariss Chali</p>
-        <p class="pt-3 pl-3">Drama | Fantasy</p>
+        <p class="text-white pt-3">Travisbell</p>
+        <p class="pt-3 pl-3 text-white">Drama | Fantasy</p>
       </div>
-      <div class="px-3">
+      <div class="px-3 overview">
         <p class="mb-0 py-3  producer-p p-section text-white">
          {{movie.overview}}
         </p>
        <div class="rating-wrapper">
-         <p class="rating font-weight-bold">{{movie.vote_average}}</p>
-         <round-progress responsive="true" [current]=movie.vote_average max=10 color="yellow" background="black"></round-progress>
-         <p class="company">IMDb</p>
+         <round-progress
+           responsive="true" [current]=movie.vote_average
+           max=10
+           color="yellow" background="black">
+         </round-progress>
+         <p class="rating font-weight-bold text-white">{{movie.vote_average}}</p>
+         <p class="company text-white">
+           <span
+             style="background-color: #272731; padding: .4em">
+             IMDb</span>
+         </p>
        </div>
       </div>
-      <div class="d-flex justify-content-around mt-5">
+      <div class="d-flex justify-content-around mt-5 pt-2 icons-section">
         <button class="text-center btn-icon">
           <span class="material-icons" style="color: #E9CF58">grade</span>
           <p class="text-white">UNFAV</p>
         </button>
         <button class="text-center btn-icon">
-          <span class="material-icons">laptop_mac</span>
+          <span class="material-icons text-white">laptop_mac</span>
           <p class="text-white">SET</p>
         </button>
         <button class="text-center btn-icon">
-          <span class="imdb">IMDb</span>
+          <span class="imdb text-white">IMDb</span>
           <p class="text-white">INFOS</p>
         </button>
         <button class="text-center btn-icon">
-          <span class="material-icons">slideshow</span>
+          <span class="material-icons text-white">slideshow</span>
           <p class="text-white">TRAILER</p>
         </button>
       </div>

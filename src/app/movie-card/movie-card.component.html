@@ -1,9 +1,11 @@
-<div (click)="openMovie()" class="col wrapper">
-  <div class="col content-container p-0 my-3 mx-1 ">
+<div (click)="openMovie({content: longContent})" class="col wrapper">
+  <div class="col content-container p-0 my-3 mx-1"
+       [ngStyle]="active && {backgroundColor: '#959494'}"
+  >
     <img src='{{ imgUrl + movie.poster_path }}'>
     <div class="row d-flex flex-column m-3">
       <div class="mb-3">
-        <h5 class="text-white">{{movie.title}}</h5>
+        <h5 #f class="text-white">{{movie.title}}</h5>
       </div>
       <div class="d-flex justify-content-between">
         <p class="mb-0 pb-3 producer-p">Producer</p>
@@ -12,4 +14,26 @@
     </div>
   </div>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
 
+<ng-template #longContent let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-body movie-details">
+    <app-movie-details [movie]="movie" [showCancelBtn]="false"></app-movie-details>
+  </div>
+</ng-template>

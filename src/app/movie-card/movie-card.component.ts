@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MovieObject} from "../movies-dashboard/types";
 import { environment} from "../../environments/environment";
 
@@ -9,14 +10,28 @@ import { environment} from "../../environments/environment";
 })
 export class MovieCardComponent implements OnInit {
   imgUrl = environment.imageUrl;
+  active = false;
+  isMobile: boolean;
+
   @Input() movie:MovieObject;
   @Output() openMovieDetails = new EventEmitter<{action:boolean, movie?: MovieObject}>();
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
   }
-  openMovie = () => {
-    console.log(this.movie)
-    this.openMovieDetails.emit({action: true, movie: this.movie});
+
+  openScrollableContent = (longContent) => {
+    this.modalService.open(longContent, { scrollable: true });
+  }
+
+  openMovie = ({content}) => {
+    this.isMobile = window.screen.availWidth <= 768;
+    if(!this.isMobile) {
+      this.active = !this.active
+      this.openMovieDetails.emit({action: this.active, movie: this.movie});
+    }
+    else {
+      this.openScrollableContent(content)
+    }
   }
 }

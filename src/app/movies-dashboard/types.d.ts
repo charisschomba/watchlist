@@ -12,5 +12,5 @@ export interface MovieObject {
   title: string,
   video: string,
   vote_average: number,
-  vote_count: number
+  vote_count: number,
 }

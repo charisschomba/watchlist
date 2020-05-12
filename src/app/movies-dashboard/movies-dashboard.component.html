@@ -1,5 +1,5 @@
 <div class="row dashboard-container">
-  <div class="col">
+  <div class="col pr-0">
     <nav ngbNav #nav="ngbNav" class="nav-tabs" id="nav">
       <ng-container>
         <div ngbNavItem>
@@ -12,8 +12,13 @@
               <p class="favorite-p">All your favorite movies in one place </p>
             </div>
           <div class="row d-flex justify-content-start movies-wrapper">
-            <div *ngFor="let movie of movies" style="max-width: 25%">
-              <app-movie-card (openMovieDetails)="handleMovieDetails($event)" [movie]="movie"></app-movie-card>
+            <div *ngFor="let movie of movies" style="max-width: 30%">
+              <app-movie-card
+                [id]="movie.id"
+                (openMovieDetails)="handleMovieDetails($event)"
+                [movie]="movie">
+
+              </app-movie-card>
             </div>
           </div>
           </ng-template>
@@ -38,7 +43,7 @@
     </nav>
     <div [ngbNavOutlet]="nav" class="mt-2 col"></div>
   </div>
-  <div *ngIf="openDetail" class="col-3 movies-details-wrapper">
+  <div *ngIf="openDetail" class="col movies-details-wrapper pl-0">
     <app-movie-details (closeMovieDetails)="handleMovieDetails($event)" [movie]="movieDetails"></app-movie-details>
   </div>
 </div>
