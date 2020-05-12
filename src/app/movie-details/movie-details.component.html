@@ -3,50 +3,69 @@
       <span class="material-icons cancel-icon">close</span>
     </button>
     <div class="row d-flex  flex-column flex-wrap">
-      <div>
-        <img src='{{ imgUrl + movie.poster_path }}' width="454.5px">
-      </div>
-      <div class="d-flex px-3">
-        <p class="text-white pt-3 font-weight-bold">{{movie.title}}</p>
-        <p class="pt-3 pl-3 img-fluid">{{movie.release_date.split('-')[0]}}</p>
-      </div>
-      <div class="d-flex px-3">
-        <p class="text-white pt-3">Travisbell</p>
-        <p class="pt-3 pl-3 text-white">Drama | Fantasy</p>
-      </div>
-      <div class="px-3 overview">
-        <p class="mb-0 py-3  producer-p p-section text-white">
-         {{movie.overview}}
-        </p>
-       <div class="rating-wrapper">
-         <round-progress
-           responsive="true" [current]=movie.vote_average
-           max=10
-           color="yellow" background="black">
-         </round-progress>
-         <p class="rating font-weight-bold text-white">{{movie.vote_average}}</p>
-         <p class="company text-white">
+      <div *ngIf="activeBtn==='grade'">
+        <div>
+          <img src='{{ imgUrl + movie.poster_path }}' width="454.5px">
+        </div>
+        <div class="d-flex px-3">
+          <p class="text-white pt-3 font-weight-bold">{{movie.title}}</p>
+          <p class="pt-3 pl-3 img-fluid">{{movie.release_date.split('-')[0]}}</p>
+        </div>
+        <div class="d-flex px-3">
+          <p class="text-white pt-3">Travisbell</p>
+          <p class="pt-3 pl-3 text-white">Drama | Fantasy</p>
+        </div>
+        <div class="px-3 overview">
+          <p class="mb-0 py-3  producer-p p-section text-white">
+            {{movie.overview}}
+          </p>
+          <p class="text-white">Popularity: <span>{{movie.popularity}}</span></p>
+          <p class="text-white">Vote: <span>{{movie.vote_count}}</span></p>
+          <div class="rating-wrapper">
+            <round-progress
+              responsive="true" [current]=movie.vote_average
+              max=10
+              color="yellow" background="black">
+            </round-progress>
+            <p class="rating font-weight-bold text-white">{{movie.vote_average}}</p>
+            <p class="company text-white">
            <span
              style="background-color: #272731; padding: .4em">
              IMDb</span>
-         </p>
-       </div>
+            </p>
+          </div>
       </div>
+      </div>
+      <div class="text-white d-flex justify-content-center align-items-center" *ngIf="activeBtn === 'laptop-mac'" style="height: 53em"><h1>Watch Now</h1></div>
+      <div class="text-white d-flex justify-content-center align-items-center" *ngIf="activeBtn === 'IMDb'" style="height: 53em"><h1>More from IMDB</h1></div>
+      <div class="text-white d-flex justify-content-center align-items-center" *ngIf="activeBtn === 'slideshow'" style="height: 53em"><h1>Watch trailer</h1></div>
       <div class="d-flex justify-content-around mt-5 pt-2 icons-section">
-        <button class="text-center btn-icon">
-          <span class="material-icons" style="color: #E9CF58">grade</span>
+        <button class="text-center btn-icon" (click)="handleClickBtn('grade')">
+          <span
+            class="material-icons"
+            [ngClass]="(activeBtn === 'grade') ?'active-link': 'inactive-link'"
+          >grade</span>
           <p class="text-white">UNFAV</p>
         </button>
-        <button class="text-center btn-icon">
-          <span class="material-icons text-white">laptop_mac</span>
+        <button class="text-center btn-icon" (click)="handleClickBtn('laptop-mac')" >
+          <span
+            class="material-icons"
+            [ngClass]="(activeBtn === 'laptop-mac') ?'active-link': 'inactive-link'">
+            laptop_mac</span>
           <p class="text-white">SET</p>
         </button>
-        <button class="text-center btn-icon">
-          <span class="imdb text-white">IMDb</span>
+        <button class="text-center btn-icon" (click)="handleClickBtn('IMDb')">
+          <span
+            class="imdb"
+            [ngClass]="(activeBtn === 'IMDb') ?'active-link': 'inactive-link'"
+          >IMDb</span>
           <p class="text-white">INFOS</p>
         </button>
-        <button class="text-center btn-icon">
-          <span class="material-icons text-white">slideshow</span>
+        <button class="text-center btn-icon" (click)="handleClickBtn('slideshow')">
+          <span
+            class="material-icons"
+            [ngClass]="(activeBtn === 'slideshow') ?'active-link': 'inactive-link'"
+          >slideshow</span>
           <p class="text-white">TRAILER</p>
         </button>
       </div>

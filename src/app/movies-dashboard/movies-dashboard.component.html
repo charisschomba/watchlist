@@ -1,4 +1,4 @@
-<div class="row dashboard-container">
+<div *ngIf="!loading" class="row dashboard-container">
   <div class="col pr-0">
     <nav ngbNav #nav="ngbNav" class="nav-tabs" id="nav">
       <ng-container>
@@ -29,7 +29,7 @@
           <span class="material-icons">videocam</span>
         </a>
         <ng-template ngbNavContent>
-          <p></p>
+          <h1 class="text-white"> Movies scheduled to watch will appear hear</h1>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
@@ -37,7 +37,7 @@
           <span class="material-icons">settings</span>
         </a>
         <ng-template ngbNavContent>
-          <p></p>
+          <h1 class="text-white"> Adjust your preferences</h1>
         </ng-template>
       </ng-container>
     </nav>
@@ -45,5 +45,14 @@
   </div>
   <div *ngIf="openDetail" class="col movies-details-wrapper pl-0">
     <app-movie-details (closeMovieDetails)="handleMovieDetails($event)" [movie]="movieDetails"></app-movie-details>
+  </div>
+</div>
+
+<div  class="loader d-flex justify-content-center align-items-center" *ngIf="loading">
+  <h3 class="pl-3 text-white">Getting your watchlist</h3>
+  <div>
+    <div class="spinner-grow text-white" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </div>

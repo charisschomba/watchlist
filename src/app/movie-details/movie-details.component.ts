@@ -12,6 +12,8 @@ export class MovieDetailsComponent implements OnInit {
   @Input() movie: MovieObject;
   @Input() showCancelBtn: boolean = true;
   imgUrl = environment.imageUrl;
+  activeBtn: string = 'grade'
+  show = 'grade'
   constructor() { }
 
   ngOnInit(): void {
@@ -21,4 +23,7 @@ export class MovieDetailsComponent implements OnInit {
     console.log(this.movie)
     this.closeMovieDetails.emit({action: false})
   };
+  handleClickBtn = (value: string) => {
+    this.activeBtn = value
+}
 }
